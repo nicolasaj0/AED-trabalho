@@ -168,9 +168,10 @@ O algoritmo de Dijkstra implementado usa uma **fila de prioridade min-heap binar
 
 ## Autores
 
-- (Nome do autor 1)
-- (Nome do autor 2)
-- (Nome do autor 3)
+- Jose Jeovah dos Reis Neto - 202203518
+- Dani
+- Nicolas Alves de Jesus
+- Rubens
 
 Disciplina: Algoritmos e Estruturas de Dados  
 Instituicao: (Nome da instituicao)  
