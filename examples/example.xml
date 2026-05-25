@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mapa exemplo — Sistema de Navegacao Dijkstra
+  Formato GraphML simplificado.
+  Atributos de vertice: id, x, y, label
+  Atributos de aresta:  id, source, target, weight, directed (true/false)
+-->
+<graphml xmlns="http://graphml.graphdrawing.org/graphml">
+  <graph id="mapa-urbano" edgedefault="undirected">
+
+    <!-- Vertices (locais do mapa) -->
+    <node id="1"  x="100" y="100" label="Terminal"/>
+    <node id="2"  x="300" y="100" label="Praca"/>
+    <node id="3"  x="500" y="100" label="Hospital"/>
+    <node id="4"  x="100" y="280" label="Escola"/>
+    <node id="5"  x="300" y="280" label="Centro"/>
+    <node id="6"  x="500" y="280" label="Mercado"/>
+    <node id="7"  x="700" y="280" label="Parque"/>
+    <node id="8"  x="100" y="460" label="Fabrica"/>
+    <node id="9"  x="300" y="460" label="Estadio"/>
+    <node id="10" x="500" y="460" label="Biblioteca"/>
+    <node id="11" x="700" y="460" label="Aeroporto"/>
+    <node id="12" x="200" y="370" label="Igreja"/>
+    <node id="13" x="400" y="180" label="Hotel"/>
+    <node id="14" x="600" y="370" label="Shopping"/>
+    <node id="15" x="400" y="460" label="Museu"/>
+
+    <!-- Arestas bidirecionais (ruas principais) -->
+    <edge id="e1"  source="1"  target="2"  weight="5"  directed="false"/>
+    <edge id="e2"  source="2"  target="3"  weight="7"  directed="false"/>
+    <edge id="e3"  source="1"  target="4"  weight="8"  directed="false"/>
+    <edge id="e4"  source="2"  target="5"  weight="6"  directed="false"/>
+    <edge id="e5"  source="3"  target="6"  weight="5"  directed="false"/>
+    <edge id="e6"  source="4"  target="5"  weight="4"  directed="false"/>
+    <edge id="e7"  source="5"  target="6"  weight="6"  directed="false"/>
+    <edge id="e8"  source="6"  target="7"  weight="9"  directed="false"/>
+    <edge id="e9"  source="4"  target="8"  weight="10" directed="false"/>
+    <edge id="e10" source="5"  target="9"  weight="7"  directed="false"/>
+    <edge id="e11" source="6"  target="10" weight="8"  directed="false"/>
+    <edge id="e12" source="7"  target="11" weight="12" directed="false"/>
+    <edge id="e13" source="8"  target="9"  weight="6"  directed="false"/>
+    <edge id="e14" source="9"  target="10" weight="5"  directed="false"/>
+    <edge id="e15" source="10" target="11" weight="7"  directed="false"/>
+
+    <!-- Arestas direcionadas (ruas de mao unica) -->
+    <edge id="e16" source="2"  target="13" weight="3"  directed="true"/>
+    <edge id="e17" source="13" target="6"  weight="4"  directed="true"/>
+    <edge id="e18" source="5"  target="12" weight="2"  directed="true"/>
+    <edge id="e19" source="12" target="9"  weight="3"  directed="true"/>
+    <edge id="e20" source="9"  target="15" weight="2"  directed="true"/>
+    <edge id="e21" source="15" target="10" weight="3"  directed="true"/>
+    <edge id="e22" source="10" target="14" weight="4"  directed="true"/>
+    <edge id="e23" source="14" target="11" weight="5"  directed="true"/>
+
+  </graph>
+</graphml>

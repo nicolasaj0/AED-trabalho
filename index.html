@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navegação Dijkstra</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Toolbar ──────────────────────────────────────────────────────── -->
+  <header id="toolbar">
+
+    <div class="toolbar-group">
+      <h1>Navegacao Dijkstra</h1>
+    </div>
+
+    <div class="toolbar-separator"></div>
+
+    <div class="toolbar-group" id="mode-buttons">
+      <button class="tool-btn active" id="btn-pan"           title="Arrastar (P)">
+        Pan <kbd>P</kbd>
+      </button>
+      <button class="tool-btn" id="btn-add-vertex"   title="Adicionar vértice (V)">
+        +Vertice <kbd>V</kbd>
+      </button>
+      <button class="tool-btn" id="btn-add-edge"     title="Adicionar aresta (E)">
+        +Aresta <kbd>E</kbd>
+      </button>
+      <button class="tool-btn" id="btn-select-source" title="Selecionar origem (S)">
+        Origem <kbd>S</kbd>
+      </button>
+      <button class="tool-btn" id="btn-select-target" title="Selecionar destino (T)">
+        Destino <kbd>T</kbd>
+      </button>
+      <button class="tool-btn" id="btn-delete"       title="Deletar (Del)">
+        Deletar <kbd>Del</kbd>
+      </button>
+    </div>
+
+    <div class="toolbar-separator"></div>
+
+    <div class="toolbar-group">
+      <button class="tool-btn" id="btn-run"       title="Calcular caminho mais curto (Enter)">
+        Calcular <kbd>Enter</kbd>
+      </button>
+      <button class="tool-btn" id="btn-clear-path" title="Limpar rota destacada">
+        Limpar Rota
+      </button>
+    </div>
+
+    <div class="toolbar-separator"></div>
+
+    <div class="toolbar-group">
+      <button class="tool-btn" id="btn-import"   title="Importar arquivo .txt, .xml ou .json">
+        Importar
+      </button>
+      <button class="tool-btn" id="btn-export"   title="Exportar como .txt">
+        Exportar
+      </button>
+      <button class="tool-btn" id="btn-copy-img" title="Copiar imagem do canvas (Ctrl+C)">
+        Copiar Imagem
+      </button>
+      <button class="tool-btn" id="btn-clear-all" title="Limpar tudo">
+        Limpar Tudo
+      </button>
+    </div>
+
+    <div class="toolbar-separator"></div>
+
+    <div class="toolbar-group">
+      <button class="tool-btn" id="btn-dot-mode" title="Alternar modo ponto — mostra vértices como pontos para melhor visualização do mapa (D)">
+        Modo Ponto <kbd>D</kbd>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- ── Main content ─────────────────────────────────────────────────── -->
+  <div id="main-content">
+
+    <!-- Left panel -->
+    <aside id="left-panel">
+
+      <!-- Grafo -->
+      <div class="panel-section">
+        <h3>Grafo</h3>
+        <div class="stats-row">
+          <span>Vertices</span>
+          <span id="stat-vertices">0</span>
+        </div>
+        <div class="stats-row">
+          <span>Arestas</span>
+          <span id="stat-edges">0</span>
+        </div>
+        <div class="stats-row">
+          <span>Origem</span>
+          <span id="stat-source">—</span>
+        </div>
+        <div class="stats-row">
+          <span>Destino</span>
+          <span id="stat-target">—</span>
+        </div>
+      </div>
+
+      <!-- Rota -->
+      <div class="panel-section">
+        <h3>Rota</h3>
+        <div class="stats-row">
+          <span>Distancia</span>
+          <span id="stat-distance">—</span>
+        </div>
+        <div class="stats-row path-row">
+          <span>Caminho</span>
+          <span id="stat-path">—</span>
+        </div>
+      </div>
+
+      <!-- Algoritmo -->
+      <div class="panel-section">
+        <h3>Algoritmo</h3>
+        <div class="stats-row">
+          <span>Tempo</span>
+          <span id="stat-time">—</span>
+        </div>
+        <div class="stats-row">
+          <span>Nos explorados</span>
+          <span id="stat-explored">—</span>
+        </div>
+        <div class="stats-row">
+          <span>Custo total</span>
+          <span id="stat-cost">—</span>
+        </div>
+      </div>
+
+      <!-- Legenda -->
+      <div class="panel-section">
+        <h3>Legenda</h3>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#4B5563;"></div>
+          <span>Vertice normal</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#059669;"></div>
+          <span>Origem</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#DC2626;"></div>
+          <span>Destino</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#D97706;"></div>
+          <span>No no caminho</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#60A5FA;"></div>
+          <span>No explorado</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-line" style="background:#9CA3AF;"></div>
+          <span>Aresta normal</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-line" style="background:#F59E0B;"></div>
+          <span>Aresta no caminho</span>
+        </div>
+      </div>
+
+      <!-- Zoom -->
+      <div class="panel-section">
+        <h3>Zoom</h3>
+        <div class="zoom-controls">
+          <button class="zoom-btn" id="btn-zoom-in"    title="Aproximar">+</button>
+          <button class="zoom-btn" id="btn-zoom-out"   title="Afastar">-</button>
+          <button class="zoom-btn" id="btn-zoom-fit"   title="Ajustar" style="width:auto;padding:0 8px;font-size:11px;">Fit</button>
+          <button class="zoom-btn" id="btn-zoom-reset" title="Resetar zoom" style="width:auto;padding:0 8px;font-size:11px;">1:1</button>
+          <span id="zoom-level">100%</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Canvas -->
+    <main id="canvas-container">
+      <canvas id="graph-canvas"></canvas>
+      <div id="hint-text">
+        <strong>Grafo vazio</strong>
+        Importe um arquivo (.txt ou .xml)<br/>
+        ou use o modo <strong>+Vertice</strong> para adicionar nos<br/>
+        e <strong>+Aresta</strong> para conecta-los.
+      </div>
+    </main>
+
+  </div><!-- /#main-content -->
+
+  <!-- ── Status bar ────────────────────────────────────────────────────── -->
+  <footer id="status-bar">
+    <span id="status-mode">Pan</span>
+    <span id="status-coords">x: 0  y: 0</span>
+    <span id="status-message"></span>
+  </footer>
+
+</div><!-- /#app -->
+
+<!-- ── Edge creation modal ───────────────────────────────────────────── -->
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal-dialog" id="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h2 id="modal-title">Nova Aresta</h2>
+
+    <div class="form-group">
+      <label for="modal-weight">Peso / Distancia</label>
+      <input type="number" id="modal-weight" value="1" min="0" step="0.01" />
+    </div>
+
+    <div class="form-group">
+      <label>Direcao</label>
+      <div class="radio-group">
+        <label class="radio-item">
+          <input type="radio" name="modal-direction" id="modal-dir-undirected" value="undirected" checked />
+          Nao direcionada (bidirecional)
+        </label>
+        <label class="radio-item">
+          <input type="radio" name="modal-direction" id="modal-dir-directed" value="directed" />
+          Direcionada (seta)
+        </label>
+      </div>
+    </div>
+
+    <div class="modal-buttons">
+      <button class="btn-secondary" id="modal-cancel">Cancelar</button>
+      <button class="btn-primary"   id="modal-confirm">Criar Aresta</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Vertex creation modal ─────────────────────────────────────────── -->
+<div class="modal-overlay hidden" id="vertex-modal-overlay">
+  <div class="modal-dialog" id="vertex-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="vertex-modal-title">
+    <h2 id="vertex-modal-title">Novo Vertice</h2>
+
+    <div class="form-group">
+      <label for="vertex-modal-label">Rotulo (opcional)</label>
+      <input type="text" id="vertex-modal-label" placeholder="Deixe em branco para usar o ID" maxlength="20" />
+    </div>
+
+    <div class="modal-buttons">
+      <button class="btn-secondary" id="vertex-modal-cancel">Cancelar</button>
+      <button class="btn-primary"   id="vertex-modal-confirm">Adicionar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden file input -->
+<input type="file" id="file-input" accept=".txt,.xml,.json,.poly" style="display:none;" />
+
+<!-- Scripts in dependency order -->
+<script src="js/constants.js"></script>
+<script src="js/MinHeap.js"></script>
+<script src="js/Graph.js"></script>
+<script src="js/Dijkstra.js"></script>
+<script src="js/Renderer.js"></script>
+<script src="js/FileIO.js"></script>
+<script src="js/App.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

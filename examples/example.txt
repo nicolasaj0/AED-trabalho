@@ -1,0 +1,55 @@
+# ============================================================
+# Mapa exemplo — Sistema de Navegacao Dijkstra
+# ============================================================
+# Formato:
+#   V <id> <x> <y> <rotulo>
+#   E <fromId> <toId> <peso> <0=nao-direcionado | 1=direcionado>
+#
+# Este arquivo representa um pequeno mapa urbano com
+# 15 vertices (locais) e 21 arestas (ruas/caminhos).
+# ============================================================
+
+# --- Vertices (locais do mapa) ---
+V 1   100  100  Terminal
+V 2   300  100  Praca
+V 3   500  100  Hospital
+V 4   100  280  Escola
+V 5   300  280  Centro
+V 6   500  280  Mercado
+V 7   700  280  Parque
+V 8   100  460  Fabrica
+V 9   300  460  Estadio
+V 10  500  460  Biblioteca
+V 11  700  460  Aeroporto
+V 12  200  370  Igreja
+V 13  400  180  Hotel
+V 14  600  370  Shopping
+V 15  400  460  Museu
+
+# --- Arestas (ruas e caminhos) ---
+# Ruas bidirecionais principais
+E 1  2   5  0
+E 2  3   7  0
+E 1  4   8  0
+E 2  5   6  0
+E 3  6   5  0
+E 4  5   4  0
+E 5  6   6  0
+E 6  7   9  0
+E 4  8  10  0
+E 5  9   7  0
+E 6 10   8  0
+E 7 11  12  0
+E 8  9   6  0
+E 9 10   5  0
+E 10 11  7  0
+
+# Ruas de mao unica (direcionadas)
+E 2  13  3  1
+E 13  6  4  1
+E 5  12  2  1
+E 12  9  3  1
+E 9  15  2  1
+E 15 10  3  1
+E 10 14  4  1
+E 14 11  5  1
