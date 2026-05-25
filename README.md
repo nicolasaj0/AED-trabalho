@@ -173,6 +173,6 @@ O algoritmo de Dijkstra implementado usa uma **fila de prioridade min-heap binar
 - Nicolas Alves de Jesus
 - Rubens
 
-Disciplina: Algoritmos e Estruturas de Dados  
-Instituicao: (Nome da instituicao)  
-Ano: 2025
+Disciplina: Algoritmos e Estruturas de Dados 2 
+Instituicao: Universidade Federal de Goiás 
+Ano: 2026
