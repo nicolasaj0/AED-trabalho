@@ -109,9 +109,9 @@ class Renderer {
   getVertexAt(cx, cy) {
     if (!this._graph) return null;
     const world = this.canvasToWorld(cx, cy);
-    // In dot mode keep a minimum 10px canvas hit area so the map stays usable
-    const minCanvasPx = this.dotMode ? 10 : VERTEX_RADIUS;
-    const hitRadius = Math.max(minCanvasPx / this.scale, VERTEX_RADIUS);
+    // Correcao na zona clicavel de forma a ficar mais precisa
+    const minCanvasPx = this.dotMode ? 10 : 40;
+    const hitRadiusWorld = minCanvasPx / this.scale;
     for (const [id, v] of this._graph.vertices) {
       const dx = v.x - world.x;
       const dy = v.y - world.y;
