@@ -45,7 +45,7 @@ Aplicacao web interativa para visualizacao e execucao do algoritmo de Dijkstra e
 
 ### Importando mapas
 
-- Clique em **Importar** e selecione um arquivo `.txt`, `.xml` ou `.json`
+- Clique em **Importar** e selecione um arquivo `.txt`, `.xml`, `.json` ou `.poly`
 - O grafo sera carregado e a tela se ajustara automaticamente
 
 ### Exportando
@@ -119,7 +119,7 @@ E 1 3 15 0
 
 ### Formato JSON
 
-Exportado automaticamente pela aplicacao ao salvar. Pode ser reimportado sem perda de informacao.
+O formato JSON é suportado internamente pelo módulo de I/O, mas a interface atual expõe apenas exportação direta para `.txt`.
 
 ### Formato .poly (Campus UFG — gerado pelo ConverteMapaParaGrafo.c)
 
@@ -168,11 +168,10 @@ O algoritmo de Dijkstra implementado usa uma **fila de prioridade min-heap binar
 
 ## Autores
 
-- Jose Jeovah dos Reis Neto - 202203518
-- Dani
+- Dani de Moraes Santos
+- Jose Jeovah dos Reis Neto
 - Nicolas Alves de Jesus
-- Rubens
-
+- Rubens Carvalho Rocha 
 Disciplina: Algoritmos e Estruturas de Dados 2 
 Instituicao: Universidade Federal de Goiás 
 Ano: 2026
