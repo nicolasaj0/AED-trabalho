@@ -10,25 +10,24 @@
 
 ## 1. Identificação do Projeto
 
-| Campo             | Valor                                                         |
-|-------------------|---------------------------------------------------------------|
-| **Nome do Projeto** | Sistema de Navegação Primitivo (Dijkstra)                   |
-| **Disciplina**    | AED2 — Algoritmos e Estruturas de Dados 2                     |
-| **Curso**         | Ciência da Computação / Sistemas de Informação — INF/UFG      |
-| **Professor**     | André L. Moura                                                |
-| **Semestre**      | 2026-1                                                        |
-| **Data de Entrega** | 20/05/2026                                                  |
-| **Repositório**   | (a preencher pela equipe)                                     |
+| Campo               | Valor                                                         |
+|-------------------  |---------------------------------------------------------------|
+| **Nome do Projeto** | Sistema de Navegação Primitivo (Dijkstra)                     |
+| **Disciplina**      | AED2 — Algoritmos e Estruturas de Dados 2                     |
+| **Curso**           | Ciência da Computação / Sistemas de Informação — INF/UFG      |
+| **Professor**       | André L. Moura                                                |
+| **Semestre**        | 2026-1                                                        |
+| **Data de Entrega** | 07/06/2026                                                    |
+| **Repositório**     | https://github.com/MassivePYR/AED-trabalho                    |
 
 ### Equipe
 
-| # | Nome | Matrícula |
-|---|------|-----------|
-| 1 | [Nome do Aluno 1] | [Matrícula 1] |
-| 2 | [Nome do Aluno 2] | [Matrícula 2] |
-| 3 | [Nome do Aluno 3] | [Matrícula 3] |
-| 4 | [Nome do Aluno 4] | [Matrícula 4] |
-| 5 | [Nome do Aluno 5] | [Matrícula 5] |
+| # |            Nome           |   Matrícula   |
+|---|---------------------------|---------------|
+| 1 | DANIELLY DE MORAES SANTOS |   201709629   |
+| 2 | JOSÉ JEOVAH DOS REIS NETO |   202203518   |
+| 3 | NICOLAS ALVES DE JESUS    |   202301477   |
+| 4 | RUBENS CARVALHO ROCHA     |   202306979   |
 
 ---
 
@@ -48,7 +47,7 @@ Do ponto de vista da engenharia de software, o projeto é implementado em JavaSc
 
 - Visualização interativa de grafos ponderados, dirigidos e não dirigidos, sobre um canvas HTML5.
 - Importação de mapas a partir de arquivos `.txt`, `.xml`, `.json` e `.poly` (formato OpenStreetMap convertido pelo utilitário em C fornecido pelo professor).
-- Exportação do grafo corrente para os formatos `.txt` e `.xml`.
+- Exportação do grafo corrente para o formato `.txt`.
 - Criação e edição interativa de grafos: adição e remoção de vértices e arestas via clique do mouse, com configuração de peso e direcionamento.
 - Seleção visual de vértice de origem (verde) e destino (vermelho).
 - Execução do Algoritmo de Dijkstra e destacamento visual do caminho mínimo (âmbar/laranja).
