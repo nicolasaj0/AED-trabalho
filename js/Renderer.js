@@ -115,7 +115,7 @@ class Renderer {
     for (const [id, v] of this._graph.vertices) {
       const dx = v.x - world.x;
       const dy = v.y - world.y;
-      if (dx * dx + dy * dy <= hitRadius * hitRadius) return id;
+      if (dx * dx + dy * dy <= hitRadiusWorld * hitRadiusWorld) return id;
     }
     return null;
   }
