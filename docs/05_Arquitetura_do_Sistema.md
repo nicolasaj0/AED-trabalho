@@ -68,7 +68,7 @@ O sistema adota um padrão **MVC-like (Model-View-Controller)**, adaptado ao con
 | **Grafo** | `js/Graph.js` | Define as classes `Vertex`, `Edge` e `Graph`. Mantém lista de adjacência (`Map<id, Array>`). Operações CRUD de vértices e arestas. Serialização/desserialização. | Nenhuma |
 | **Dijkstra** | `js/Dijkstra.js` | Implementa `runDijkstra(graph, sourceId)` e a classe `DijkstraResult`. Usa `MinHeap` como fila de prioridade. Retorna distâncias, predecessores, contagem de nós explorados e tempo de execução. | `MinHeap.js`, `Graph.js` |
 | **Renderizador** | `js/Renderer.js` | Desenha o grafo no canvas HTML5: vértices, arestas (com setas), rótulos, pesos, grade de fundo, efeito hover. Implementa viewport culling, pan, zoom, fit-to-screen e cópia para clipboard. | `constants.js`, `Graph.js` |
-| **E/S de Arquivo** | `js/FileIO.js` | Parseia arquivos `.txt`, `.xml`, `.json` e `.poly` e constrói objetos `Graph`. Serializa `Graph` para os formatos `.txt`, `.xml` e `.json`. Dispara download de arquivos via Blob. | `Graph.js` |
+| **E/S de Arquivo** | `js/FileIO.js` | Parseia arquivos `.txt`, `.xml`, `.json` e `.poly` e constrói objetos `Graph`. Serializa `Graph` para os formatos `.txt`, `.xml` e `.json`; a interface atual oferece botão de exportação apenas para `.txt`. Dispara download de arquivos via Blob. | `Graph.js` |
 | **Controlador** | `js/App.js` | Gerencia eventos de UI (mouse, teclado, botões), coordena Model e View, exibe modais de criação de vértices/arestas, executa o Dijkstra e atualiza o painel de estatísticas. | Todos os demais módulos |
 | **Bootstrap** | `js/main.js` | Aguarda o carregamento do DOM e instancia/inicializa o `App`. | `App.js` |
 
